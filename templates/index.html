@@ -1,1 +1,162 @@
-d
+{% extends "base.html" %}
+
+{% block title %} 
+
+Library 
+
+{% endblock %}
+
+{% block heading %}
+
+Library
+
+{% endblock %}
+
+{% block content%}
+
+<div class="sims-container">
+    <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">Learning Apps</h2>
+    <button id="mainBtn" onclick="addModal()" style="margin-right: 19px;">Add New App</button>
+</div>
+<div class="grid">
+    
+    {% for sim in sims %}
+    <div class="tile">
+        <img src="{{ url_for('static', filename='images/' + sim.image) }}" alt="Grid Image">
+        <h4 class="tile-title">{{ sim.sim_name }}</h3>
+        <p class="tile-desc">{{ sim.sim_desc }}</p>
+       <div class="tags-container">
+            <div class="tag {{ sim.sim_type }}">{{ sim.sim_type }}</div>
+            <!-- Add other tags as needed -->
+        </div>
+        <div class="overlay">
+            <button onclick="location.href='/sims/{{sim.id }}'">View</button>
+            <button onclick="assignModal()">Assign</button>
+            <button onclick="moreModal('{{ sim.id }}')">More</button>
+        </div>
+    </div>
+    {% endfor %}
+    
+</div>
+
+
+
+<div id="moreModal" class="modal">
+    <div style="max-width:800px;" class="modal-content">
+     <span class="close-modal" onclick="closeMoreModal()">&times;</span>
+        <div class="modal-body">
+            <h2 id="simName"></h2>
+            <div class="flex-container">
+                <div class="column">
+                    <p><div id="simDesc"></div></p>
+                    <label>Embedcode</label></br>
+                    <textarea id="simEmbed" name="simEmbed" rows="4"></textarea>
+                </div>
+                <div class="column">
+                    <div id="simImage"></div>
+                    <div id="delButton"></div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="assignModal" class="modal">
+    <div style="max-width:400px;" class="modal-content">
+        <span class="close-modal" onclick="closeAssignModal()">&times;</span>
+        <div class="modal-body">
+            <h2>Assign to Students</h2>
+            <label>Assignment Name:</label>
+            <input type="text" name="simName">
+            <label>Assignment Description:</label>
+            <textarea name="simDesc" rows="4"></textarea>
+            <label>Select Class:</label>
+            <select name="subject">
+                <option value="Math">Period 1</option>
+                <option value="Physics">Period 2</option>
+                <option value="Chemistry">Period 1</option>
+                <option value="Statistics">Period 1</option>
+            </select>
+            <label for="start">Due date:</label>
+    
+            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31" /></br></br>
+            <button class="blue-button" type="submit">Assign Now</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeAddModal()">&times;</span>
+        <h2>Add a New App</h2>
+        <form action="/add_sim" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+                <!-- Begin Flex Container -->
+                <div class="flex-container">
+                    <!-- First Column (50% width) -->
+
+                    
+                    <!-- Second Column (50% width) -->
+                    <div class="column">
+                        <label>Name:</label>
+                        <input type="text" name="simName">
+
+                        <label>Description:</label>
+                        <textarea name="simDesc" rows="4"></textarea>
+
+                        <label>Subject:</label>
+                        <select name="subject">
+                            <option value="Math">Math</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Statistics">Statistics</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label>Level:</label>
+                        <select name="level">
+                            <option value="Elementary School">Elementary School</option>
+                            <option value="Middle School">Middle School</option>
+                            <option value="High School">High School</option>
+                            <option value="Higher Ed">Higher Ed</option>
+                        </select>
+
+                        <label>Type:</label>
+                        <select name="type">
+                            <option value="Game">Game</option>
+                            <option value="Experiment">Experiment</option>
+                            <option value="Simulation">Simulation</option>
+                            <option value="Activity">Activity</option>
+                        </select>
+                    </div>
+                                      <div class="column">
+                                      <label>Upload Zip File:</label>
+                                      <input type="file" name="file">
+                                      <p class="helper-text">Upload a Zip file with HTML, CSS, and JS files for your app.</p>
+                        <div id="or">OR</div>
+                        <label>Generate App using AI:</label>
+                        <textarea name="htmlCode" rows="10" placeholder="Describe your Simulation requirement here"></textarea>
+                    </div>
+                </div>
+                <!-- End Flex Container -->
+
+                <button class="blue-button" type="submit">Save Now</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<!-- partial -->
+
+
+
+
+{% endblock %}
+

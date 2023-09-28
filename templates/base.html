@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %} {% endblock %} - Top Sim</title>
+
+  <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+  <link rel="stylesheet" href="/static/style.css">
+  {% block sim_css %} {% endblock %}
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bxl-c-plus-plus icon'></i>
+    <div class="logo_name">TopSim.AI</div>
+    <i class='bx bx-menu' id="btn"></i>
+  </div>
+  <ul class="nav-list">
+    <li>
+      <i class='bx bx-search'></i>
+      <input type="text" placeholder="Search...">
+      <span class="tooltip">Search</span>
+    </li>
+    <li>
+      <a href="/" style="text-decoration:none">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Library</span>
+      </a>
+      <span class="tooltip">Library</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-user'></i>
+        <span class="links_name">Assignment</span>
+      </a>
+      <span class="tooltip">Assignment</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-chat'></i>
+        <span class="links_name">Messages</span>
+      </a>
+      <span class="tooltip">Messages</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-pie-chart-alt-2'></i>
+        <span class="links_name">Analytics</span>
+      </a>
+      <span class="tooltip">Analytics</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-folder'></i>
+        <span class="links_name">File Manager</span>
+      </a>
+      <span class="tooltip">Files</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-heart'></i>
+        <span class="links_name">Favorite</span>
+      </a>
+      <span class="tooltip">Favorite</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-cog'></i>
+        <span class="links_name">Setting</span>
+      </a>
+      <span class="tooltip">Setting</span>
+    </li>
+    <li class="profile">
+      <div class="profile-details">
+        <img src="https://drive.google.com/uc?export=view&id=1ETZYgPpWbbBtpJnhi42_IR3vOwSOpR4z" alt="profileImg">
+        <div class="name_job">
+          <div class="name">Stacy Tan</div>
+          <div class="job">Teacher</div>
+        </div>
+      </div>
+      <i class='bx bx-log-out' id="log_out"></i>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  
+<div class="title-container">
+    <h1 style="padding-top: 10px; padding-bottom: 10px; padding-left: 20px;">{% block heading %} {% endblock %} </h1>
+</div>
+<hr style="background-color: lightgray; height: 1px;">
+
+{% block content %} {% endblock %}
+</section>
+<script  src="/static/script.js"></script>
+</body>
+</html>

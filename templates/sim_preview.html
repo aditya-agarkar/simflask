@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block title %} 
+
+Preview - {{ sim.sim_name }}
+
+{% endblock %}
+
+{% block sim_css %} 
+
+<link rel="stylesheet" href="/sims/{{sim.id}}/styles.css"/>
+
+{% endblock %}
+
+{% block heading %}
+
+        <a href="/" style="text-decoration: none;">&larr;&nbsp;&nbsp;</a>Preview - {{ sim.sim_name }}</span>
+
+{% endblock %}
+
+
+{% block content%}
+<div class="preview-container">
+<div class="preview-window">
+
+{{ sim.index_content|safe }}
+
+</div>
+</div>
+{% endblock %}
+
